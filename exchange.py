@@ -33,7 +33,27 @@ def build(app):
     second_coin_box.add(second_coin_input)
 
     # Boton de calcular
-    button = toga.Button("Calcular")
+    def calculate(widget):
+        first_coin = first_coin_selection.value
+        logging.info(f"Primera moneda: {first_coin}")
+        second_coin = second_coin_selection.value
+        logging.info(f"Segunda moneda: {second_coin}")
+
+        if not first_coin_input.value.isdigit():
+            second_coin_input.value = ""
+            return None
+
+        if first_coin == second_coin:
+            second_coin_input.value = first_coin_input.value
+        else:
+            logging.info(coins_data[first_coin])
+            logging.info(coins_data[first_coin][second_coin])
+            result = float(first_coin_input.value) / float(coins_data[first_coin][second_coin])
+            second_coin_input.value = f"{result:.2f}"
+
+        logging.info(f"Resultado: {first_coin_input.value} {first_coin} equivale a {second_coin_input.value} {second_coin}")
+
+    button = toga.Button("Calcular", on_press=calculate)
 
     # Caja principal
     box = toga.Box(id='box', style=Pack(direction=COLUMN, padding_top=10))
