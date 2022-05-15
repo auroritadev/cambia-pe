@@ -1,0 +1,14 @@
+{
+	"soles": {
+		"dolares": 3.8,
+		"euros": 4.1
+	},
+	"dolares": {
+		"soles": 0.26,
+		"euros": 1.04
+	},
+	"euros": {
+		"soles": 0.25,
+		"dolares": 0.96
+	}
+}
